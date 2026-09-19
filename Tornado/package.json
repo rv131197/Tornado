@@ -5,8 +5,14 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "App.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   }
 }

@@ -1,0 +1,86 @@
+.app{
+    padding: 30px;
+}
+
+.header{
+    height: 80px;
+    background-color: cornsilk;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.logo{
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+}
+
+.nav-items{
+    margin: 0px 20px;
+}
+.nav-items ul{
+    display: flex;
+    font-size: 18px;
+}
+
+.bodycontainer{
+    margin-top: 20px;
+    background-color: cornsilk;
+    border: 1px solid black;
+}
+
+.searchbar-container{
+    display: flex;
+    /* height: 200px; */
+    margin: 20px;
+}
+
+.input{
+    height: 30px;
+    width: 180px;
+}
+
+.searchicon{
+    height: 35px;
+    width: 30px;
+    border: 1px solid black;
+}
+
+.restuarant-container{
+    border: 1px solid black;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.card{
+    background-color:honeydew;
+    padding: 10px;
+    width: 250px;
+    margin: 10px;
+}
+
+.card:hover{
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+
+.btn-container{
+    display: flex;
+
+}
+
+.filter-container{
+    margin:20px;
+    /* padding: 10px; */
+}
+
+.filter-btn{
+    padding: 10px;
+    cursor: pointer;
+}
