@@ -43,9 +43,16 @@
 }
 
 .searchicon{
-    height: 35px;
+    height: 30px;
+    width: 25px;
+    margin-left: -5px;
+
+}
+
+.search-btn{
+cursor: pointer;
+height: 35px;
     width: 30px;
-    border: 1px solid black;
 }
 
 .restuarant-container{
@@ -82,5 +89,26 @@
 
 .filter-btn{
     padding: 10px;
+    cursor: pointer;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    background-color:honeydew;
+    padding: 10px;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.login-btn{
+    margin: 0 15px;
+    padding: 3px;
+    width: 100px;
     cursor: pointer;
 }

@@ -1,5 +1,6 @@
 {
   "name": "tornado",
+  "proxy": "https://www.swiggy.com",
   "version": "1.0.0",
   "description": "Food App",
   "license": "ISC",
@@ -13,6 +14,7 @@
   },
   "dependencies": {
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4"
   }
 }
