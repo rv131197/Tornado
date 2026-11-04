@@ -16,3 +16,5 @@ export const CDN_LINK_IMAGE = 'https://media-assets.swiggy.com/swiggy/image/uplo
 export const DATA_UPDATE_URL = 'https://namastedev.com/api/v1/listRestaurantMenu/'
 
 export const RESTUARANT_MENU_API = 'https://namastedev.com/api/v1/listRestaurantMenu/'
+
+export const DUMMY_URL = 'https://www.treebo.com/blog/wp-content/uploads/2025/05/Pakhala-Bhata-1024x675.jpg'

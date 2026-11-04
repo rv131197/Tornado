@@ -1,8 +1,8 @@
 import {styleLogo, CDN_LINK_IMAGE} from '../utilities/constants'
 
 const RestuarantCard = (props) => {
+    console.log(props)
     const {res} = props;
-    console.log(res)
         return (
                 <div className='card' key={res.info.id}>
                 <img className='logo' style={styleLogo} src={CDN_LINK_IMAGE+res.info.cloudinaryImageId} />
@@ -14,6 +14,18 @@ const RestuarantCard = (props) => {
             </div>
             )
        
+}
+
+export const Promoted = (RestuarantCard) => {
+    return (props) => {
+        console.log("promoted:", props)
+        return <div>
+            <label className="absolute bg-black text-white">
+                Promoted
+            </label>
+            <RestuarantCard {...props} />
+        </div>
+    }
 }
 
 export default RestuarantCard;

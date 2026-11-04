@@ -1,4 +1,4 @@
-import RestuarantCard from './RestuarantCard';
+import RestuarantCard, {Promoted} from './RestuarantCard';
 import Shimmer from './Shimmer';
 import {SEARCH_ICON_URL, SWIGGY_URL, DATA_UPDATE_URL} from '../utilities/constants';
 import { useEffect, useState } from 'react';
@@ -10,6 +10,9 @@ const Body = () => {
     const [searchData, setSearchData] = useState([]);
     const [filteredData, setFilterData] = useState('');
     const { params } = useParams(); 
+    const WithPromoted = Promoted(RestuarantCard);
+
+    // console.log(resList)
 
     useEffect(()=> {
         fetchData();
@@ -19,15 +22,9 @@ const Body = () => {
         const data = await fetch(SWIGGY_URL);
         const jsonData = await data.json();
         setResList(jsonData.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-            setSearchData(jsonData.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-        console.log(searchData);
+        setSearchData(jsonData.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        
     }
-
-    const fetchMoreData = async() => {
-        const data = await fetch(DATA_UPDATE_URL+params);
-        const moreData = await data.json();
-        console.log(moreData);
-    } 
 
 
     return resList.length === 0 ? <Shimmer /> : (
@@ -60,7 +57,9 @@ const Body = () => {
             
 
             <div className='restuarant-container'>
-                {searchData.map(resData => <Link key={resData.info.id} to={'/restuarants/'+resData.info.id}><RestuarantCard  res = {resData}/></Link>)}
+                {searchData.map(resData => <Link key={resData.info.id} to={'/restuarants/'+resData.info.id}>
+                    {resData.info.avgRating<4.5 ? <WithPromoted res = {resData} /> : <RestuarantCard res = {resData}/>}
+                    </Link>)}
             </div>
                     </div>
     )

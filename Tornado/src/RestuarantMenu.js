@@ -1,39 +1,35 @@
-import { useEffect, useState } from "react";
-import {RESTUARANT_MENU_API, styleLogo, CDN_LINK_IMAGE } from '../utilities/constants'
+import useFetchMenu from "../utilities/useFetchMenu";
+import {styleLogo, CDN_LINK_IMAGE } from '../utilities/constants'
 import { useParams } from "react-router";
 import Shimmer from "./Shimmer";
+import RestuarantAccordian from "./RestuarantAccordian";
 
 const RestuarantMenu = () => {
     const { id } = useParams();
-    const [resDetails, setResDetails] = useState({});
-    const [resMenu, setResMenu] = useState({})
+    const resInfo = useFetchMenu(id);
 
-    useEffect(() => {
-        fetchRestuarantMenu();
-    }, [])
+    if(!resInfo) return <Shimmer />
+    const resDetails = resInfo.cards[2].card.card.info
+    const menu = resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards
+    const categories = menu.filter(res => res.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
 
-    const fetchRestuarantMenu = async () => {
-            const data = await fetch(RESTUARANT_MENU_API+id);
-            const json = await data.json();
-            console.log(json.data)
-            setResDetails(json.data.cards[2].card.card.info)
-            setResMenu(json.data.cards[4])
-        }
-
-        if(Object.keys(resDetails).length === 0) return <Shimmer />
 
     return(
         <div>
-            <div className="res-details-container">
-                <h1>{resDetails.name} </h1>
-                <img className='logo' style={styleLogo} src={CDN_LINK_IMAGE+resDetails.cloudinaryImageId} />
-                <p>{resDetails.costForTwo} - {resDetails.costForTwo}</p>
-                <p>{resDetails.cuisines.join(", ")} </p>
-                <p>Delivery Time - {resDetails.sla.deliveryTime}mins</p>
-            </div>
-            <div className="res-menu-container">
+            <div className="res-details-container text-center">
+                <h1 className="font-bold mt-4">{resDetails.name} </h1>
+                <img className='logo p-4' style={styleLogo} src={CDN_LINK_IMAGE+resDetails.cloudinaryImageId} />
+                <p className="font-bold text-m">{"Cost"} - {resDetails.costForTwo}</p>
+                <p className="font-bold text-xs m-2">{resDetails.cuisines.join(", ")} </p>
+                <p className="font-bold text-xs mb-2">Delivery Time - {resDetails.sla.deliveryTime}mins</p>
+                <div className="font-bold text-xl m-4">
+                    
+                    {categories.map(cat =>  <RestuarantAccordian key={cat.card.card.title} data={cat.card.card}/>)}
+                </div>
 
             </div>
+            {/* <div className="res-menu-container">
+            </div> */}
         </div>
     )
 }
